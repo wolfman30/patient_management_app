@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from catalog.models import Patient
+from commoninfo.models import Patient
 
 # Create your views here.
 def index(request):
