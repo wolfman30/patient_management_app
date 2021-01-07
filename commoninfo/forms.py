@@ -9,4 +9,13 @@ class AddPatient(forms.Form):
     date_of_birth = forms.DateField(help_text="Enter the patient's date of birth: ")
 
     def clean_dob(self): 
-        data = self.cleaned_data['date_of_birth']
+
+        dob = self.cleaned_data['date_of_birth']
+
+        if dob > datetime.date.today():
+            raise ValidationError(_('The patient cannot be born in the future.'))
+
+        if dob < datetime.date.today() - datetime.timedelta(years=130):
+            raise ValidationError(_('The date of birth entered makes the patient impossibly old.'))
+
+        return dob
