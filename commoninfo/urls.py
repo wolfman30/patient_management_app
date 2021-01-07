@@ -6,5 +6,5 @@ urlpatterns = [
 ]
 
 urlpatterns += [
-    path('commoninfo/<uuid:pk>/add/', views.add_patient, name='add-patient')
+    path('commoninfo/add/', views.add_patient, name='add-patient')
 ]
