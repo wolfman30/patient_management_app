@@ -15,6 +15,8 @@ def add_patient(request):
         form = AddPatient(request.POST)
         if form.is_valid():
             form.save()
+            form = AddPatient()
+
         else:
             form = AddPatient()
 
