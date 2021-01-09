@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib import messages
 from .models import Patient
 from .forms import AddPatient
 
@@ -15,6 +16,8 @@ def add_patient(request):
         form = AddPatient(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Successfully added patient!')
+            #clears the form for a new entry
             form = AddPatient()
 
         else:

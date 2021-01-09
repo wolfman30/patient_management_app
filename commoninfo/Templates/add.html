@@ -7,24 +7,16 @@
 
       <fieldset>
         <br>
-
+        {% if messages %}
+        <ul>
+          {% for message in messages %}
+          <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+        
         {% csrf_token %}
         {{form.as_p}}
-
-        <!--
-        <br>     
-        <label for='uniqueId'>Unique ID: </label>
-        <input type='text' id='uniqueId' name='uniqueId'><br><br>
-
-        <label for='firstName'>First Name: </label>
-        <input type='text' id='firstName' name='firstName'><br><br>
-
-        <label for="lastName">Last Name</label>
-        <input type='text' id='lastName' name='lastName'><br><br>
-
-        <label for='dob'>Date of Birth</label>
-        <input type='date' id='dob' name='dob'><br><br>
-        -->
 
         <button type='submit'>Submit</button>
 
