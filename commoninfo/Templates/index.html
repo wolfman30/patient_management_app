@@ -3,11 +3,11 @@
 {% block content %}
   <h1>Patient Management Application</h1>
   <p>Patient registry develped by <em>Andrew Wolf</em>!</p>
-  <p>The registry has the following details:</p>
+  
   <p>
     <a href="{% url 'add' %}"><button type='button'><h2>Register</h2></button></a>
   </p>
   <p>
-    <a href=""><button type='button'><h2>Check</h2></button></a>
+    <a href="{% url 'fetch' %}"><button type='button'><h2>Check</h2></button></a>
   </p>
 {% endblock %}

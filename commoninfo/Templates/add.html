@@ -3,8 +3,16 @@
 
   {% block content %}
 
-    <form action = "" method = 'post'>
+    <form action = "" method = 'POST'>
 
+      <fieldset>
+        <br>
+
+        {% csrf_token %}
+        {{form.as_p}}
+
+        <!--
+        <br>     
         <label for='uniqueId'>Unique ID: </label>
         <input type='text' id='uniqueId' name='uniqueId'><br><br>
 
@@ -16,8 +24,11 @@
 
         <label for='dob'>Date of Birth</label>
         <input type='date' id='dob' name='dob'><br><br>
+        -->
 
-        <input type='submit' value="Submit">
+        <button type='submit'>Submit</button>
+
+      </fieldset>
         
     </form>
 

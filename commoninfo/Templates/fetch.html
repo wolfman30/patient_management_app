@@ -1,14 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
- <title>Check Patient</title> 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+{% extends "base_generic.html" %}
 
-  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-</head>
+
+{% block content %}
 
 <form action = '' method='get'>
 <br><input type='text' id='uniqueId'><br><br>
-<label for='uniqueId'>Submit</label>
+<input type='submit' label='Submit'>
 </form>
+
+{% endblock %}

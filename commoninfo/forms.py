@@ -1,25 +1,16 @@
-import datetime
 from django import forms 
-from django.core.exceptions import ValidationError
-from django.utils.translation import ugettext_lazy as _
+from .models import Patient
 
-class AddPatient(forms.Form):
 
-    unique_ID = forms.CharField(max_length=20, unique=True, primary_key = True, help_text="Enter the patient's unique ID: ")
-    first_Name = forms.CharField(max_length=20, help_text="Enter the patient's first name: ")
-    last_Name = forms.CharField(max_length=20, help_text="Enter the patient's last name: ")
-    date_of_birth = forms.DateField(help_text="Enter the patient's date of birth: ")
+class AddPatient(forms.ModelForm):
 
-    def clean_dob(self): 
+    class Meta: 
 
-        dob = self.cleaned_data['date_of_birth']
+        model = Patient
 
-        if dob > datetime.date.today():
-            raise ValidationError(_('The patient cannot be born in the future.'))
-
-        if dob < datetime.date.today() - datetime.timedelta(weeks=52*130): #52 weeks in a year, 130 years 
-            raise ValidationError(_('The date of birth entered makes the patient impossibly old.'))
-
-        return dob
+        fields = ['unique_ID', 'first_Name', 'last_Name', 'date_of_birth']
+        labels = {'unique_ID': 'Unique ID', 'first_Name':'First Name', 'last_name': 'Last Name', 'date_of_birth': 'Date of Birth'}
+    
+ 
 
 

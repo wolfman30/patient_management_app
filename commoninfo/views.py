@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from commoninfo.models import Patient
+from .models import Patient
+from .forms import AddPatient
 
 # Create your views here.
 def index(request):
@@ -7,6 +8,17 @@ def index(request):
     return render(request, 'index.html')
 
 def add_patient(request):
-    #patient_model = get_object_or_404(Patient)
 
-    return render(request, 'add.html')
+    form = AddPatient()
+
+    if request.method == 'POST':
+        form = AddPatient(request.POST)
+        if form.is_valid():
+            form.save()
+        else:
+            form = AddPatient()
+
+    return render(request, 'add.html', {'form': form})
+
+def fetch_patient(request):
+    return render(request, 'fetch.html')
