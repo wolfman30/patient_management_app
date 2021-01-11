@@ -6,9 +6,9 @@ class Patient(models.Model):
     first_Name = models.CharField(max_length=20, help_text="Enter the patient's first name: ")
     last_Name = models.CharField(max_length=20, help_text="Enter the patient's last name: ")
     date_of_birth = models.DateField(help_text="Enter the patient's date of birth: ")
-    address = models.CharField(max_length=40, help_text = 'Enter address of residence')
-    phone = models.PositiveIntegerField(max_length = 10, help_text="Enter the patient's phone number")
-    email = models.CharField(max_length = 40, help_text = "Enter the patient's email address: ")
+    address = models.CharField(max_length=40, default='null', help_text = 'Enter address of residence')
+    phone = models.CharField(max_length = 12, default=0, help_text="Enter the patient's phone number")
+    email = models.EmailField(max_length = 40, default='null', help_text = "Enter the patient's email address: ")
     reason_for_visit = models.TextField(max_length = 300, default = 'null', help_text='Enter the reason for visit', )
 
     class Meta: 
