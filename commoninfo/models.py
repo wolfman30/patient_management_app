@@ -6,6 +6,7 @@ class Patient(models.Model):
     first_Name = models.CharField(max_length=20, help_text="Enter the patient's first name: ")
     last_Name = models.CharField(max_length=20, help_text="Enter the patient's last name: ")
     date_of_birth = models.DateField(help_text="Enter the patient's date of birth: ")
+    reason_for_visit = models.TextField(max_length = 400)
 
     class Meta: 
         ordering = ['unique_ID', 'first_Name', 'last_Name', 'date_of_birth']
