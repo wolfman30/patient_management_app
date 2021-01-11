@@ -8,8 +8,9 @@ class AddPatient(forms.ModelForm):
 
         model = Patient
 
-        fields = ['unique_ID', 'first_Name', 'last_Name', 'date_of_birth']
-        labels = {'unique_ID': 'Unique ID', 'first_Name':'First Name', 'last_name': 'Last Name', 'date_of_birth': 'Date of Birth'}
+        fields = ['unique_ID', 'first_Name', 'last_Name', 'date_of_birth', 'reason_for_visit']
+        labels = {'unique_ID': 'Unique ID', 'first_Name':'First Name', 'last_name': 'Last Name', 
+                    'date_of_birth': 'Date of Birth', 'reason_for_visit': 'Reason for Visit'}
     
  
 
