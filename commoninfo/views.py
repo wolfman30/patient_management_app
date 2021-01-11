@@ -28,12 +28,18 @@ def add_patient(request):
 
 
 def fetch_patient(request):
-    form = AddPatient(request.GET) 
+    
+    context = {}
+    
     if request.method == 'GET':
         
-        #fetch = Patient.objects.filter(pk=list(request.GET.values())[0])
-        
-        context = {'fetch': Patient.objects.filter(pk=list(request.GET.values())[0])}
+        try: 
+            fetch = Patient.objects.filter(pk=list(request.GET.values())[0])
+            
+            context = {'fetch': fetch}
+
+        except Exception as e: 
+            print(e)
        
         return render(request, 'fetch.html', context)
 

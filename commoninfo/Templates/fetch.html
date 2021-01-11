@@ -13,19 +13,18 @@
 <input type='submit' label='Submit'>
 </form>
 <br>
+{%for patient in fetch%}
 
-{%for item in fetch%}
-
-<ul>
+    <ul>
 
     <li>
-        {{item.first_Name}}
-        {{item.last_Name}}
+    {{patient.first_Name}}
+    {{patient.last_Name}}
     </li>
 
-    <li>{{item.date_of_birth}}</li>
+    <li>{{patient.date_of_birth}}</li>
 
-</ul>
+    </ul>
 
 {%endfor%}
 
