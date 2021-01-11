@@ -8,6 +8,7 @@ def index(request):
 
     return render(request, 'index.html')
 
+
 def add_patient(request):
 
     form = AddPatient()
@@ -25,5 +26,16 @@ def add_patient(request):
 
     return render(request, 'add.html', {'form': form})
 
+
 def fetch_patient(request):
+    form = AddPatient(request.GET) 
+    if request.method == 'GET':
+        
+        #fetch = Patient.objects.filter(pk=list(request.GET.values())[0])
+        
+        context = {'fetch': Patient.objects.filter(pk=list(request.GET.values())[0])}
+       
+        return render(request, 'fetch.html', context)
+
+    
     return render(request, 'fetch.html')
