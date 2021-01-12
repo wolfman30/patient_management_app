@@ -15,16 +15,25 @@
 <br>
 {%for patient in fetch%}
 
-    <ul>
+    
 
-    <li>
+    <p>
+    <strong>Patient's Full Name:</strong>
     {{patient.first_Name}}
     {{patient.last_Name}}
-    </li>
+    </p>
 
-    <li>{{patient.date_of_birth}}</li>
+    <p><strong>Date of Birth:</strong> {{patient.date_of_birth}}</p>
 
-    </ul>
+    <p><strong>Address: </strong>{{patient.address}}</p>
+
+    <p><strong>Phone: </strong>{{patient.phone}}</p>
+
+    <p><strong>Email: </strong> {{patient.email}} </p>
+
+    <p><strong>Reason for Visit: </strong> {{patient.reason_for_visit}}</p>
+
+    
 
 {%endfor%}
 
