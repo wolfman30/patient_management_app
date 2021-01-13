@@ -14,6 +14,9 @@ class AddPatient(forms.ModelForm):
         labels = {'unique_ID': 'Unique ID', 'first_Name':'First Name', 'last_name': 'Last Name', 
                     'date_of_birth': 'Date of Birth', 'address': 'Address', 'phone': 'Phone number', 
                     'email': 'Email', 'reason_for_visit': 'Reason for Visit'}
+
+        def validate_dob(self):
+            pass
     
 
 
