@@ -23,6 +23,10 @@ def add_patient(request):
                 print(e)
 
             form.save()
+
+            #calls the date_of_birth validation method 
+            form.validate_dob()
+            
             messages.success(request, 'Successfully added patient!')
             
             #clears the form for a new entry
