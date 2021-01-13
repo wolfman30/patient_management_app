@@ -19,6 +19,10 @@ class AddPatient(forms.ModelForm):
             #runs standard clean method 
             cleaned_data = super(AddPatient, self).clean()
 
+            #gets cleaned data from date_of_birth field
+            date_of_birth = cleaned_data.get('date_of_birth')
+            
+
             
     
 
