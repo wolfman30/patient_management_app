@@ -16,7 +16,12 @@ def add_patient(request):
     if request.method == 'POST':
         form = AddPatient(request.POST)
         if form.is_valid():
-            form.validate_dob() #ensures date of birth is in valid range
+
+            try:
+                pass
+            except Exception as e: 
+                print(e)
+
             form.save()
             messages.success(request, 'Successfully added patient!')
             

@@ -1,8 +1,6 @@
 from django import forms
-from django.core.exceptions import ValidationError 
-from django.utils.translation import ugettext_lazy as _ 
 from .models import Patient
-import datetime
+
 
 
 
@@ -17,7 +15,5 @@ class AddPatient(forms.ModelForm):
                     'date_of_birth': 'Date of Birth', 'address': 'Address', 'phone': 'Phone number', 
                     'email': 'Email', 'reason_for_visit': 'Reason for Visit'}
     
- 
-    def validate_dob(self): 
-        pass 
+
 

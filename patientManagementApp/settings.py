@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'commoninfo.apps.CatalogConfig',
+    #configures the patient management app 
+    'commoninfo.apps.PatientAppConfig',
 ]
 
 MIDDLEWARE = [
