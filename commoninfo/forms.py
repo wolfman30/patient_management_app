@@ -16,7 +16,10 @@ class AddPatient(forms.ModelForm):
                     'email': 'Email', 'reason_for_visit': 'Reason for Visit'}
 
         def validate_dob(self):
-            pass
+            #runs standard clean method 
+            cleaned_data = super(AddPatient, self).clean()
+
+            
     
 
 
