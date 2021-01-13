@@ -18,7 +18,8 @@ class AddPatient(forms.ModelForm):
                     'date_of_birth': 'Date of Birth', 'address': 'Address', 'phone': 'Phone number', 
                     'email': 'Email', 'reason_for_visit': 'Reason for Visit'}
 
-    def validate_dob(self):
+    def valid_dob(self):
+
         #runs standard clean method 
         cleaned_data = super(AddPatient, self).clean()
 
@@ -26,9 +27,9 @@ class AddPatient(forms.ModelForm):
         date_of_birth = cleaned_data.get('date_of_birth')
 
         if date_of_birth > datetime.date.today():
-            raise ValidationError(_('Invalid date: Date of birth cannot be in the future!'))
+            return True
 
-        return date_of_birth
+        return False
 
             
 

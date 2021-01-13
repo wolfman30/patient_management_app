@@ -17,20 +17,17 @@ def add_patient(request):
         form = AddPatient(request.POST)
         if form.is_valid():
 
-            try:
-                pass
-            except Exception as e: 
-                print(e)
+            if form.valid_dob(): 
+                messages.error(request, 'Invalid date of birth')
+            else: 
+                form.save()
 
-            form.save()
+                #calls the date_of_birth validation method 
 
-            #calls the date_of_birth validation method 
-            form.validate_dob()
-            
-            messages.success(request, 'Successfully added patient!')
-            
-            #clears the form for a new entry
-            form = AddPatient()
+                messages.success(request, 'Successfully added patient!')
+                
+                #clears the form for a new entry
+                form = AddPatient()
 
         else:
             form = AddPatient()
