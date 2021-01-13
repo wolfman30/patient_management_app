@@ -1,5 +1,8 @@
 from django import forms
+from django.core.exceptions import ValidationError
+from django.utils.translation import ugettext_lazy as _
 from .models import Patient
+import datetime
 
 
 
@@ -21,7 +24,9 @@ class AddPatient(forms.ModelForm):
 
             #gets cleaned data from date_of_birth field
             date_of_birth = cleaned_data.get('date_of_birth')
+
             
+
 
             
     
