@@ -26,7 +26,12 @@ class AddPatient(forms.ModelForm):
         #gets cleaned data from date_of_birth field
         date_of_birth = cleaned_data.get('date_of_birth')
 
+        #checks if birth date is in the future 
         if date_of_birth > datetime.date.today():
+            return True
+
+        #checks if the person is 130 years old or older
+        elif date_of_birth.year < datetime.date.today().year - 130: 
             return True
 
         return False
