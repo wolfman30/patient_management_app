@@ -7,11 +7,11 @@
 
         <br>
         {% if messages %}
-        <ul>
+        
           {% for message in messages %}
-          <li>{{ message }}</li>
+          <strong><p id='message'>{{ message }}</p></strong>
           {% endfor %}
-        </ul>
+        
         {% endif %}
         
         {% csrf_token %}
