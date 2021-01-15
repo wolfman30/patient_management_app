@@ -18,7 +18,10 @@ class AddPatient(forms.ModelForm):
                     'date_of_birth': 'Date of Birth', 'address': 'Address', 'phone': 'Phone number', 
                     'email': 'Email', 'reason_for_visit': 'Reason for Visit'}
 
-    def valid_dob(self):
+    def valid_dob(self): 
+        '''
+        used to validate the birth date: returns true if birth day is in the future or older than 130 years
+        '''
 
         #runs standard clean method 
         cleaned_data = super(AddPatient, self).clean()
