@@ -6,7 +6,7 @@
 <form action = '' method='GET'>
 
 
-<br><input type='text' id='uniqueId' name='fetch'><br><br>
+<br><input type='text' id='uniqueId' name='fetch' placeholder="Type in patient's unique id" size=30><br><br>
 
 
   
@@ -22,8 +22,9 @@
     {{patient.first_Name}}
     {{patient.last_Name}}
     </p>
+
     <p><strong>Unique ID: </strong> {{patient.unique_ID}}</p>
-    
+
     <p><strong>Date of Birth:</strong> {{patient.date_of_birth}}</p>
 
     <p><strong>Address: </strong>{{patient.address}}</p>
