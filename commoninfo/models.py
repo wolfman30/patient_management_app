@@ -1,10 +1,16 @@
 from django.db import models
+from django.core.validators import RegexValidator
 
-# Create your models here.
+alpha = RegexValidator(r'^[a-zA-Z]*$', 'Only letters are allowed in names.')
+#created the above variable based on Stack Overflow author Martijn Pieters from the URL below
+#https://stackoverflow.com/questions/17165147/how-can-i-make-a-django-form-field-contain-only-alphanumeric-characters
+
+
+
 class Patient(models.Model): 
     unique_ID = models.CharField(max_length=20, unique=True, primary_key = True, help_text="Enter the patient's unique ID: ")
-    first_Name = models.CharField(max_length=20, help_text="Enter the patient's first name: ")
-    last_Name = models.CharField(max_length=20, help_text="Enter the patient's last name: ")
+    first_Name = models.CharField(max_length=20, validators=[alpha], help_text="Enter the patient's first name: ")
+    last_Name = models.CharField(max_length=20, validators=[alpha], help_text="Enter the patient's last name: ")
     date_of_birth = models.DateField(help_text="Enter the patient's date of birth: ")
     address = models.CharField(max_length=40, default='null', help_text = 'Enter address of residence')
     phone = models.CharField(max_length = 12, default=0, help_text="Enter the patient's phone number")
