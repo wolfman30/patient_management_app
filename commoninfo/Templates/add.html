@@ -5,7 +5,10 @@
     <form action = "" method = 'POST'>
 
         <br>
-        {% if messages %}
+        <!-- Figured out how to display error messages from this post in Stack Overflow: 
+          https://stackoverflow.com/questions/47923952/python-django-how-to-display-error-messages-on-invalid-login-->
+        
+          {% if messages %}
         
           {% for message in messages %}
           <strong><p class="message">{{ message }}</p></strong>
