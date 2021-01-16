@@ -43,9 +43,9 @@ class AddPatient(forms.ModelForm):
 
         return False
 
-    def invalid_fname(self):
+    nums = '0123456789'
 
-        nums = '0123456789'
+    def invalid_fname(self):
 
         first_name = AddPatient.cleaned_data(self).get('first_Name')
 
