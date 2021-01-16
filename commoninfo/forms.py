@@ -4,7 +4,7 @@ from .models import Patient
 import datetime
 
 
-
+NUMS = '0123456789'
 
 class AddPatient(forms.ModelForm):
 
@@ -43,14 +43,12 @@ class AddPatient(forms.ModelForm):
 
         return False
 
-    nums = '0123456789'
-
     def invalid_fname(self):
 
         first_name = AddPatient.cleaned_data(self).get('first_Name')
 
         for letter in first_name: 
-            if letter in nums: 
+            if letter in NUMS: 
                 return True
 
         return False
