@@ -19,6 +19,10 @@ def add_patient(request):
 
             if form.valid_dob(): 
                 messages.error(request, 'Invalid date of birth')
+
+            if form.invalid_fname():
+                messages.error(request, 'Invalid first name. Names do not have numbers.')
+                
             else: 
                 form.save()
 
