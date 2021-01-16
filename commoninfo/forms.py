@@ -4,7 +4,7 @@ from .models import Patient
 import datetime
 
 
-NUMS = '0123456789'
+NUMS = "0123456789!@#$%^&*()~|"
 
 class AddPatient(forms.ModelForm):
 
