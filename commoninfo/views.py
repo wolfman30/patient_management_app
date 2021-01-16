@@ -22,15 +22,13 @@ def add_patient(request):
             else: 
                 form.save()
 
-                #calls the date_of_birth validation method 
-
                 messages.success(request, 'Successfully added patient!')
                 
                 #clears the form for a new entry
                 form = AddPatient()
 
-        else:
-            form = AddPatient()
+        #else:
+            #form = AddPatient()
 
     return render(request, 'add.html', {'form': form})
 
