@@ -4,7 +4,7 @@ from .models import Patient
 import datetime
 
 
-NUMS = "0123456789!@#$%^&*()~|"
+NUMS_sCHARS = "0123456789!@#$%^&*()~|"
 
 class AddPatient(forms.ModelForm):
 
@@ -48,7 +48,7 @@ class AddPatient(forms.ModelForm):
         first_name = AddPatient.cleaned_data(self).get('first_Name')
 
         for letter in first_name: 
-            if letter in NUMS: 
+            if letter in NUMS_sCHARS: 
                 return True
 
         return False
