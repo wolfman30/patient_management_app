@@ -17,8 +17,10 @@ class AddPatient(forms.ModelForm):
                     'date_of_birth': 'Date of Birth', 'address': 'Address', 'phone': 'Phone number', 
                     'email': 'Email', 'reason_for_visit': 'Reason for Visit'}
 
-    #runs standard clean method 
-    cleaned_data = super(AddPatient, self).clean()
+    #runs standard clean method
+    def cleaned_data(self):
+        cleaned_data = super(AddPatient, self).clean()
+        return cleaned_data
 
     def invalid_dob(self):
 
@@ -29,7 +31,7 @@ class AddPatient(forms.ModelForm):
         
 
         #gets cleaned data from date_of_birth field
-        date_of_birth = cleaned_data.get('date_of_birth')
+        date_of_birth = AddPatient.cleaned_data(self).get('date_of_birth')
 
         #checks if birth date is in the future 
         if date_of_birth > datetime.date.today():
@@ -45,7 +47,7 @@ class AddPatient(forms.ModelForm):
 
         nums = '0123456789'
 
-        first_name = cleaned_data.get('first_Name')
+        first_name = AddPatient.cleaned_data(self).get('first_Name')
 
         for letter in first_name: 
             if letter in nums: 
