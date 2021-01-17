@@ -29,7 +29,7 @@ def add_patient(request):
             if form.invalid_phone():
                 messages.error(request, 'Invalid phone number. Only use numbers from 0 to 9 without spaces.')
 
-            else: 
+            if True not in [form.invalid_dob(), form.invalid_fname(), form.invalid_lname(), form.invalid_phone()]: 
                 form.save()
 
                 messages.success(request, 'Successfully added patient!')
