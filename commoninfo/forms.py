@@ -53,6 +53,16 @@ class AddPatient(forms.ModelForm):
 
         return False
 
+    def invalid_lname(self): 
+        
+        last_name = AddPatient.cleaned_data(self).get('last_Name')
+
+        for letter in last_name:
+            if letter in NUMS_sCHARS:
+                return True
+        
+        return False
+
         
 
             
