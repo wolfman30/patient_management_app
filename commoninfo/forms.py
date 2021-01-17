@@ -2,9 +2,11 @@ from django import forms
 from django.utils.translation import ugettext_lazy as _
 from .models import Patient
 import datetime
+import string
 
 
 NUMS_sCHARS = "0123456789!@#$%^&*()~|"
+LETTERS_sCHARS = string.ascii_letters + string.punctuation
 
 class AddPatient(forms.ModelForm):
 
