@@ -30,8 +30,6 @@ class AddPatient(forms.ModelForm):
         used to validate the birth date: returns true if birth day is in the future or older than 130 years
         '''
 
-        
-
         #gets cleaned data from date_of_birth field
         date_of_birth = AddPatient.cleaned_data(self).get('date_of_birth')
 
@@ -64,6 +62,17 @@ class AddPatient(forms.ModelForm):
                 return True
         
         return False
+
+    def invalid_phone(self): 
+
+        phone = AddPatient.cleaned_data(self).get('phone')
+
+        for num in phone: 
+            if num in LETTERS_sCHARS:
+                return True
+
+        return False 
+
 
         
 
