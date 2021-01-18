@@ -2,6 +2,7 @@ from django.db import models
 from django.core.validators import RegexValidator
 
 alpha = RegexValidator(r'^[a-zA-Z]*$', 'Only letters are allowed in names.')
+nums = RegexValidator(r'^[0-9]*$', 'Phone number should have only numbers.')
 #created the above variable based on Stack Overflow author Martijn Pieters from the URL below
 #https://stackoverflow.com/questions/17165147/how-can-i-make-a-django-form-field-contain-only-alphanumeric-characters
 
@@ -11,9 +12,9 @@ class Patient(models.Model):
     unique_ID = models.CharField(max_length=20, unique=True, primary_key = True, help_text="Enter the patient's unique ID: ")
     first_Name = models.CharField(max_length=20, validators=[alpha], help_text="Enter the patient's first name: ")
     last_Name = models.CharField(max_length=20, validators=[alpha], help_text="Enter the patient's last name: ")
-    date_of_birth = models.DateField(help_text="Enter the patient's date of birth: ")
+    date_of_birth = models.DateField(help_text="Enter the patient's date of birth in the form of year-month-day")
     address = models.CharField(max_length=40, help_text = 'Enter address of residence')
-    phone = models.CharField(max_length = 12, help_text="Enter the patient's phone number")
+    phone = models.CharField(max_length = 12, validators=[nums], help_text="Enter the patient's phone number")
     email = models.EmailField(max_length = 40, blank='True', help_text = "Enter the patient's email address: ")
     reason_for_visit = models.TextField(max_length = 300, help_text='Enter the reason for visit', )
 

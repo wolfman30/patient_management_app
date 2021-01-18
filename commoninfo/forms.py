@@ -1,11 +1,6 @@
 from django import forms
 from .models import Patient
 import datetime
-import string
-
-
-NUMS_sCHARS = "0123456789" + string.punctuation
-LETTERS_sCHARS = string.ascii_letters + string.punctuation
 
 class AddPatient(forms.ModelForm):
 
@@ -18,19 +13,14 @@ class AddPatient(forms.ModelForm):
                     'date_of_birth': 'Date of Birth', 'address': 'Address', 'phone': 'Phone number', 
                     'email': 'Email', 'reason_for_visit': 'Reason for Visit'}
 
-    #runs standard clean method
-    def cleaned_data(self):
-        cleaned_data = super(AddPatient, self).clean()
-        return cleaned_data
-
     def invalid_dob(self):
 
         '''
         used to validate the birth date: returns true if birth day is in the future or older than 130 years
         '''
-
+        cleaned_data = super(AddPatient, self).clean()
         #gets cleaned data from date_of_birth field
-        date_of_birth = AddPatient.cleaned_data(self).get('date_of_birth')
+        date_of_birth = cleaned_data.get('date_of_birth')
 
         #checks if birth date is in the future 
         if date_of_birth > datetime.date.today():
@@ -41,36 +31,6 @@ class AddPatient(forms.ModelForm):
             return True
 
         return False
-
-    def invalid_fname(self):
-
-        first_name = AddPatient.cleaned_data(self).get('first_Name')
-
-        for letter in first_name: 
-            if letter in NUMS_sCHARS: 
-                return True
-
-        return False
-
-    def invalid_lname(self): 
-        
-        last_name = AddPatient.cleaned_data(self).get('last_Name')
-
-        for letter in last_name:
-            if letter in NUMS_sCHARS:
-                return True
-        
-        return False
-
-    def invalid_phone(self): 
-
-        phone = AddPatient.cleaned_data(self).get('phone')
-
-        for num in phone: 
-            if num in LETTERS_sCHARS:
-                return True
-
-        return False 
 
 
         
