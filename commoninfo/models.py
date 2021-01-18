@@ -25,4 +25,4 @@ class Patient(models.Model):
         return reverse('patient-detail', args=[str(self.primary_key)])
 
     def __str__(self): 
-        return f'{self.unique_ID}, {self.first_Name}, {self.last_Name}, {self.date_of_birth},{self.address}, {self.phone}, {self.email}, {self.reason_for_visit}'
+        return f'{self.unique_ID}, {self.first_Name} {self.last_Name}, {self.date_of_birth},{self.address}, {self.phone}, {self.email}, {self.reason_for_visit}'
