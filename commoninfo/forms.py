@@ -5,7 +5,7 @@ import datetime
 import string
 
 
-NUMS_sCHARS = "0123456789!@#$%^&*()~|"
+NUMS_sCHARS = "0123456789" + string.punctuation
 LETTERS_sCHARS = string.ascii_letters + string.punctuation
 
 class AddPatient(forms.ModelForm):
