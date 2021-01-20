@@ -14,7 +14,7 @@ def validate_birthyear(value):
     '''
     code from https://stackoverflow.com/questions/5013041/how-to-restrict-user-to-select-date-between-range-of-years-in-django by Ori
     '''
-    if value < 1910 or value > 2021: 
+    if value.year < 1910 or value.year > 2021: 
         raise ValidationError(f'{value} is not a valid birth year!')
 
 class Patient(models.Model): 
