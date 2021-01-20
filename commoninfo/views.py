@@ -28,9 +28,6 @@ def add_patient(request):
                 #clears the form for a new entry
                 form = AddPatient()
 
-        #else:
-            #form = AddPatient()
-
     return render(request, 'add.html', {'form': form})
 
 
