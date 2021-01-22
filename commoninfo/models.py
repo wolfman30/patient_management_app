@@ -1,4 +1,6 @@
 from django.db import models
+#the use of RegexValidator drawn from 
+#https://stackoverflow.com/questions/17165147/how-can-i-make-a-django-form-field-contain-only-alphanumeric-characters
 from django.core.validators import RegexValidator
 
 #code from https://stackoverflow.com/questions/5013041/how-to-restrict-user-to-select-date-between-range-of-years-in-django by Ori
@@ -15,7 +17,7 @@ def validate_birthyear(value):
     code from https://stackoverflow.com/questions/5013041/how-to-restrict-user-to-select-date-between-range-of-years-in-django by Ori
     '''
     if value.year < 1910 or value.year > 2021: 
-        raise ValidationError(f'{value} is not a valid birth year!')
+        raise ValidationError(f'{value.year} is not a valid birth year!')
 
 class Patient(models.Model): 
     unique_ID = models.CharField(max_length=20, unique=True, primary_key = True, help_text="Enter the patient's unique ID: ")
