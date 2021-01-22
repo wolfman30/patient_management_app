@@ -3,30 +3,31 @@ from django.contrib import messages
 from .models import Patient
 from .forms import AddPatient
 
-# Create your views here.
+
 def index(request):
 
     return render(request, 'index.html')
 
 
 def add_patient(request):
+    '''
+    renders the form to register a new patient on the html template add.html
+    '''
 
     form = AddPatient()
 
     if request.method == 'POST':
+
         form = AddPatient(request.POST)
+
         if form.is_valid():
 
-            if form.invalid_dob(): 
-                messages.error(request, 'Invalid date of birth')
+            form.save()
 
-            else: 
-                form.save()
-
-                messages.success(request, 'Successfully added patient!')
-                
-                #clears the form for a new entry
-                form = AddPatient()
+            messages.success(request, 'Successfully added patient!')
+            
+            #clears the form for a new entry
+            form = AddPatient()
 
     return render(request, 'add.html', {'form': form})
 
