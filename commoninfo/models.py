@@ -1,6 +1,6 @@
 from django.db import models
 #the use of RegexValidator drawn from 
-#https://stackoverflow.com/questions/17165147/how-can-i-make-a-django-form-field-contain-only-alphanumeric-characters
+#https://stackoverflow.com/questions/17165147/how-can-i-make-a-django-form-field-contain-only-alphanumeric-characters by Martijn Peters
 from django.core.validators import RegexValidator
 
 #code from https://stackoverflow.com/questions/5013041/how-to-restrict-user-to-select-date-between-range-of-years-in-django by Ori
@@ -8,13 +8,14 @@ from django.core.exceptions import ValidationError
 
 alpha = RegexValidator(r'^[a-zA-Z]*$', 'Only letters are allowed in names.')
 nums = RegexValidator(r'^[0-9]*$', 'Phone number should have only numbers.')
-#created the above variable based on Stack Overflow author Martijn Pieters from the URL below
+#created the above variable based on Stack Overflow author Martijn Pieters from the URL below (StackOverflow, answer by Martijn Peters)
 #https://stackoverflow.com/questions/17165147/how-can-i-make-a-django-form-field-contain-only-alphanumeric-characters
 
 
 def validate_birthyear(value):
     '''
     code from https://stackoverflow.com/questions/5013041/how-to-restrict-user-to-select-date-between-range-of-years-in-django by Ori
+    This ensures that the patient is not born in a future year or born earlier than 1910: being over 111 years old is too improbable.
     '''
     if value.year < 1910 or value.year > 2021: 
         raise ValidationError(f'{value.year} is not a valid birth year!')
